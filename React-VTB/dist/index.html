@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>ВТБ - Инвентаризация</title>
+    <style>
+      /* Глубокая темная тема в стиле ВТБ */
+      body {
+        margin: 0;
+        padding: 0;
+        background: #0a0f1c; /* Очень темный синий */
+        color: #f1f5f9;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+          "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+          "Helvetica Neue", sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        min-height: 100vh;
+      }
+
+      #root {
+        min-height: 100vh;
+        background: radial-gradient(
+            ellipse at top,
+            #1e3a8a33 0%,
+            transparent 50%
+          ),
+          radial-gradient(ellipse at bottom, #3b82f633 0%, transparent 50%),
+          linear-gradient(135deg, #0f172a 0%, #0a0f1c 100%);
+      }
+
+      /* Эффект частиц (опционально) */
+      body::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: radial-gradient(
+            white,
+            rgba(28, 0, 0, 0.2) 2px,
+            transparent 4px
+          ),
+          radial-gradient(white, rgba(255, 255, 255, 0.15) 1px, transparent 3px),
+          radial-gradient(white, rgba(255, 255, 255, 0.1) 2px, transparent 4px);
+        background-size: 550px 550px, 350px 350px, 250px 250px;
+        background-position: 0 0, 40px 60px, 130px 270px;
+        z-index: -1;
+        opacity: 0.1;
+      }
+    </style>
+    <link rel="stylesheet" href="./index.css" />
+  <script defer src="renderer.js"></script></head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>

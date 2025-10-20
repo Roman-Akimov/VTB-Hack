@@ -1,0 +1,123 @@
+.header {
+  display: flex;
+  align-items: center;
+  padding: 1.5rem 3rem;
+  background: linear-gradient(135deg, #ffffff 0%, #c2ceda 100%);
+  box-shadow: 0 4px 12px rgba(0, 71, 187, 0.08);
+  border-bottom: 3px solid #0047bb;
+  position: relative;
+  min-height: 100px;
+}
+
+.header::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+}
+
+.header-logo {
+  width: 150px;
+  height: auto;
+  filter: brightness(0) saturate(100%) invert(16%) sepia(89%) saturate(3742%)
+    hue-rotate(216deg) brightness(91%) contrast(101%);
+  transition: transform 0.3s ease;
+}
+
+.header-logo:hover {
+  transform: scale(1.05);
+}
+
+.header-content {
+  margin-left: 2rem;
+  padding-left: 2rem;
+  border-left: 2px solid #e2e8f0;
+  position: relative;
+}
+
+.header-content::after {
+  content: "";
+  position: absolute;
+  left: -2px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 2px;
+  height: 60%;
+  background: #0047bb;
+  opacity: 0.6;
+}
+
+.header-content h1 {
+  margin: 0;
+  font-size: 2.2rem;
+  color: #0047bb;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  text-shadow: 0 2px 4px rgba(0, 71, 187, 0.1);
+  background: linear-gradient(135deg, #0047bb 0%, #00a3e0 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.header-content p {
+  margin: 0.5rem 0 0 0;
+  font-size: 1.1rem;
+  color: #475569;
+  font-weight: 400;
+  line-height: 1.4;
+  max-width: 400px;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .header {
+    padding: 1rem 1.5rem;
+    flex-direction: column;
+    text-align: center;
+    min-height: auto;
+  }
+
+  .header-logo {
+    width: 140px;
+    margin-bottom: 1rem;
+  }
+
+  .header-content {
+    margin-left: 0;
+    padding-left: 0;
+    border-left: none;
+    padding-top: 1rem;
+    border-top: 1px solid #e2e8f0;
+  }
+
+  .header-content::after {
+    display: none;
+  }
+
+  .header-content h1 {
+    font-size: 1.8rem;
+  }
+
+  .header-content p {
+    font-size: 1rem;
+  }
+}
+
+/* Анимация появления */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.header {
+  animation: fadeInUp 0.6s ease-out;
+}

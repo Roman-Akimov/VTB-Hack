@@ -1,0 +1,78 @@
+{
+  "name": "react-vtb",
+  "version": "1.0.0",
+  "main": "main/main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start:react": "webpack serve --config src/webpack/webpack.renderer.js --env development",
+    "build:react": "webpack --config src/webpack/webpack.renderer.js --env production",
+    "build:main": "webpack --config src/webpack/webpack.main.js --env production",
+    "start:electron": "cross-env NODE_ENV=development electron .",
+    "start": "concurrently \"npm run start:react\" \"wait-on http://localhost:3000 && npm run start:electron\"",
+    "build": "npm run build:react && npm run build:main",
+    "dist": "npm run build && electron-builder",
+    "dist:win": "npm run build && electron-builder --win",
+    "pack": "npm run build && electron-builder --dir"
+  },
+  "keywords": [],
+  "author": "Roman Akimov",
+  "license": "ISC",
+  "homepage": "./",
+  "dependencies": {
+    "@tailwindcss/vite": "^4.1.14",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "tailwindcss": "^4.1.14"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.28.4",
+    "@babel/preset-env": "^7.28.3",
+    "@babel/preset-react": "^7.27.1",
+    "babel-loader": "^10.0.0",
+    "concurrently": "^9.2.1",
+    "cross-env": "^10.1.0",
+    "css-loader": "^7.1.2",
+    "electron": "^38.3.0",
+    "electron-builder": "^26.0.12",
+    "html-webpack-plugin": "^5.6.4",
+    "style-loader": "^4.0.0",
+    "wait-on": "^9.0.1",
+    "webpack": "^5.102.1",
+    "webpack-cli": "^6.0.1",
+    "webpack-dev-server": "^5.2.2"
+  },
+  "description": "",
+  "build": {
+    "appId": "com.Akimov.react-vtb",
+    "productName": "VTB",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "dist/**/*",
+      "node_modules/**/*",
+      "package.json"
+    ],
+    "extraMetadata": {
+      "main": "dist/main.js"
+    },
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "icon": "assets/image.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "VTB"
+    }
+  }
+}
